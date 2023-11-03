@@ -6,18 +6,18 @@ namespace RoysAirplane
 {
     public class AirplaneSounds : MonoBehaviour
     {
-        AirplaneController airplaneController;
+        DroneController airplaneController;
         AudioSource audioSource;
 
         public AnimationCurve windVolume;
         private void Start()
         {
-            airplaneController = GetComponent<AirplaneController>();
+            airplaneController = GetComponent<DroneController>();
             audioSource = GetComponent<AudioSource>();
         }
         private void Update()
         {
-            audioSource.volume = windVolume.Evaluate(airplaneController.airplaneSpeed.magnitude);
+            audioSource.volume = windVolume.Evaluate(airplaneController.droneSpeed.magnitude);
         }
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class JoystickController : MonoBehaviour
+public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public GameObject controllableObject;
-     IJoystickContrillable controllableObjectInterface;
+    IJoystickContrillable controllableObjectInterface;
     public Color enabledButtonColor;
     public Color disabledButtonColor;
 
@@ -176,8 +176,8 @@ public class JoystickController : MonoBehaviour
     Image dotImage;
     Image joystickImage;
     Vector2 locPos;
-    public Vector2 joystickPosition = Vector2.one * 200;
-
+    public string axisXName = "Horizontal";
+    public string axisYName = "Vertical";
     void Start()
     {
         LinkJoystick(controllableObject);
@@ -191,78 +191,25 @@ public class JoystickController : MonoBehaviour
         maximizedZoneRange = _maximizedZoneRange;
 
     }
-    bool isJPress;
-    public void OnJPress(bool _isJPress)
-    {
-        isJPress = _isJPress;
-        Vector2 touchPos = GetJTouchPos();
-        if (_isJPress)
-        {
-            if (touchPos == Vector2.zero)
-            {
-                isJPress = false;
-                return;
-            }
-            if (!_isLockJoystickMove)
-                dotPos.position = joystickPos.position = touchPos;
-            Moving(touchPos);
-        }
-        else
-        {
-            OnEndMove();
-        }
-    }
-    Vector2 touch = Vector2.zero;
-    public Vector3 GetJTouchPos()
-    {
-        for (int i = 0; i < Input.touchCount; i++)
-        {
-            if (Input.touches[i].position.x > Screen.width * joystickField.anchorMin.x && Input.touches[i].position.x < Screen.width * joystickField.anchorMax.x &&
-                Input.touches[i].position.y > Screen.height * joystickField.anchorMin.y && Input.touches[i].position.y < Screen.height * joystickField.anchorMax.y)
-                return touch = Input.touches[i].position;
-        }
-        return touch;
-    }
     void Update()
     {
-        if(controllableObjectInterface==null) LinkJoystick(controllableObject);
-        Vector2 touch = Vector3.zero;
-        if (isJPress)
-        {
-            touch = GetJTouchPos();
-            Moving(touch);
-        }
+        if (controllableObjectInterface == null) LinkJoystick(controllableObject);
 
-        //#if UNITY_EDITOR
-        // if (UnityEngine.Device.SystemInfo.deviceType != DeviceType.Desktop) return;
-        Vector2 velocity = Vector2.zero;
-        if (Input.GetKey(KeyCode.A))
+        if (!isJPress)
         {
-            velocity += Vector2.left;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            velocity += Vector2.right;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            velocity += Vector2.up;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            velocity += Vector2.down;
-        }
-        if (velocity == Vector2.zero)
-        {
-            if(touch == Vector2.zero)
+            Vector2 velocity = Vector2.zero;
+            velocity += Vector2.right * Input.GetAxis(axisXName);
+            velocity += Vector2.up * Input.GetAxis(axisYName);
+            if (velocity == Vector2.zero)
+            {
                 OnEndMove();
+            }
+            else
+            {
+                if (!_isLockJoystickMove) joystickPos.anchoredPosition = Vector2.zero;
+                Moving(new Vector2(joystickPos.position.x, joystickPos.position.y) + velocity * _joystickSize);
+            }
         }
-        else
-        {
-            if (!_isLockJoystickMove) joystickPos.position = joystickPosition;
-            Moving(new Vector2(joystickPos.position.x, joystickPos.position.y) + velocity * _joystickSize);
-        }
-        //#endif
     }
 
     public void OnEndMove()
@@ -273,7 +220,8 @@ public class JoystickController : MonoBehaviour
         dotPos.position = joystickPos.position;
         dotImage.color = joystickImage.color = new Color(1, 1, 1, 0.05f);
         dotPos.sizeDelta = new Vector2(_dotSize, _dotSize);
-        controllableObjectInterface.Move(0, 0, 0);
+        controllableObjectInterface.SetAxis(axisXName, 0);
+        controllableObjectInterface.SetAxis(axisYName, 0);
     }
     public float maxJoystickAlpha = 0.2f;
     public float maxJoystickDotAlpha = 1f;
@@ -325,7 +273,8 @@ public class JoystickController : MonoBehaviour
             dotImage.color = new Color(1, 1, 1, maxJoystickDotAlpha);
         }
         dotPos.position = new Vector2(moveX * _joystickSize + joystickPos.position.x, moveZ * _joystickSize + joystickPos.position.y);
-        controllableObjectInterface.Move(moveX, moveZ, willSpeed);
+        controllableObjectInterface.SetAxis(axisXName, moveX);
+        controllableObjectInterface.SetAxis(axisYName, moveZ);
     }
 
     public void LinkJoystick(GameObject _controllableObject)
@@ -334,9 +283,26 @@ public class JoystickController : MonoBehaviour
         controllableObjectInterface = controllableObject.GetComponent<IJoystickContrillable>();
         controllableObjectInterface.LinkJoyStick(GetComponent<JoystickController>());
     }
+
+    bool isJPress;
+    public void OnDrag(PointerEventData eventData)
+    {
+        Moving(eventData.position);
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        isJPress = true;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isJPress = false;
+        OnEndMove();
+    }
 }
 public interface IJoystickContrillable
 {
     public void LinkJoyStick(JoystickController _scr_JoystickController);
-    public void Move(float _moveX, float _moveZ, float _willSpeed); //axis x, z; distance from the center of the joystick
+    public void SetAxis(string axisName, float value);
 }
