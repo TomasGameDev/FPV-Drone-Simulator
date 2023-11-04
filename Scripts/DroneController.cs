@@ -123,12 +123,12 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
         droneParts.propellerFLSound = droneParts.propellerFL.GetComponent<AudioSource>();
         droneParts.propellerFLSound.time = Random.Range(0, droneParts.propellerFLSound.clip.length);
+         
+        instance = this;
 
         droneParameters.stabilization = droneParameters.stabilization;
 
         droneParameters.isWork = droneParameters.isWork;
-
-        instance = this;
     }
 
     public void HandleInputs()
