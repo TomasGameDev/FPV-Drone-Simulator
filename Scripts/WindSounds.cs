@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace RoysAirplane
 {
-    public class AirplaneSounds : MonoBehaviour
+    public class WindSounds : MonoBehaviour
     {
         DroneController airplaneController;
+        [Range(0f, 1f)] public float windForce;
         AudioSource audioSource;
 
         public AnimationCurve windVolume;
@@ -17,7 +18,8 @@ namespace RoysAirplane
         }
         private void Update()
         {
-            audioSource.volume = windVolume.Evaluate(airplaneController.droneSpeed.magnitude);
+            audioSource.volume = windVolume.Evaluate(airplaneController.droneSpeed.magnitude) + windForce;
+            audioSource.volume = Mathf.Clamp(audioSource.volume, 0, 1f);
         }
     }
 }

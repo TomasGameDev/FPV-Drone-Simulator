@@ -36,6 +36,16 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     [System.Serializable]
     public class DroneParameters
     {
+        bool _isWork;
+        public bool isWork
+        {
+            get { return _isWork; }
+            set
+            {
+                _isWork = value;
+                instance.droneUI.droneWorkText.SetActive(!value);
+            }
+        }
         bool _stabilization;
         public bool stabilization
         {
@@ -52,7 +62,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         public float maxThrottle = 500;
         public float roll;
         public float pitch;
-        public float yaw; 
+        public float yaw;
 
         public float vThrottle;
         public float vRoll;
@@ -80,6 +90,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         public Text modeText;
         public float throttleValueScale = 1;
         public Text throttleText;
+        public GameObject droneWorkText;
     }
     [Space(10)]
 
@@ -102,10 +113,19 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     {
         rig = GetComponent<Rigidbody>();
         droneParts.propellerBRSound = droneParts.propellerBR.GetComponent<AudioSource>();
+        droneParts.propellerBRSound.time = Random.Range(0, droneParts.propellerBRSound.clip.length);
+
         droneParts.propellerBLSound = droneParts.propellerBL.GetComponent<AudioSource>();
+        droneParts.propellerBLSound.time = Random.Range(0, droneParts.propellerBLSound.clip.length);
+
         droneParts.propellerFRSound = droneParts.propellerFR.GetComponent<AudioSource>();
+        droneParts.propellerFRSound.time = Random.Range(0, droneParts.propellerFRSound.clip.length);
+
         droneParts.propellerFLSound = droneParts.propellerFL.GetComponent<AudioSource>();
+        droneParts.propellerFLSound.time = Random.Range(0, droneParts.propellerFLSound.clip.length);
         instance = this;
+
+        droneParameters.stabilization = droneParameters.stabilization;
     }
 
     public void HandleInputs()
@@ -117,6 +137,10 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         if (Input.GetKeyDown(KeyCode.F))
         {
             droneParameters.stabilization = !droneParameters.stabilization;
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            droneParameters.isWork = !droneParameters.isWork;
         }
     }
     bool rollPressed;
@@ -167,14 +191,23 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
     }
     private void UpdatePhysics()
-    { 
+    {
+        if (!droneParameters.isWork)
+        {
+            droneParameters.vPitch = 0;
+            droneParameters.vRoll = 0;
+            droneParameters.vYaw = 0;
+            if (droneParameters.vThrottle > droneParameters.throttleIncrement || droneParameters.vThrottle < -droneParameters.throttleIncrement )
+                droneParameters.vThrottle += droneParameters.throttleIncrement * (droneParameters.vThrottle > 0 ? -1f : 1f);
+            else droneParameters.vThrottle = 0;
+        }
         droneParts.FRRot = droneParameters.vThrottle + droneParameters.vPitch * droneParameters.pitch - droneParameters.vRoll * droneParameters.roll;
         droneParts.FLRot = droneParameters.vThrottle + droneParameters.vPitch * droneParameters.pitch + droneParameters.vRoll * droneParameters.roll;
         droneParts.BRRot = droneParameters.vThrottle - droneParameters.vPitch * droneParameters.pitch - droneParameters.vRoll * droneParameters.roll;
         droneParts.BLRot = droneParameters.vThrottle - droneParameters.vPitch * droneParameters.pitch + droneParameters.vRoll * droneParameters.roll;
 
 
-        if (droneParameters.stabilization)
+        if (droneParameters.stabilization && droneParameters.isWork)
         {
             if (!rollPressed)
             {
