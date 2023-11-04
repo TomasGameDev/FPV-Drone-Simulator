@@ -52,7 +52,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         public float maxThrottle = 500;
         public float roll;
         public float pitch;
-        public float yaw;
+        public float yaw; 
 
         public float vThrottle;
         public float vRoll;
@@ -167,7 +167,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
     }
     private void UpdatePhysics()
-    {
+    { 
         droneParts.FRRot = droneParameters.vThrottle + droneParameters.vPitch * droneParameters.pitch - droneParameters.vRoll * droneParameters.roll;
         droneParts.FLRot = droneParameters.vThrottle + droneParameters.vPitch * droneParameters.pitch + droneParameters.vRoll * droneParameters.roll;
         droneParts.BRRot = droneParameters.vThrottle - droneParameters.vPitch * droneParameters.pitch - droneParameters.vRoll * droneParameters.roll;

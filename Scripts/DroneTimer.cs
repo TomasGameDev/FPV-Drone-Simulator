@@ -28,6 +28,13 @@ public class DroneTimer : MonoBehaviour
         clock.minutes = lockedClock.minutes;
         clock.hours = lockedClock.hours;
     }
+    public void ResetClock()
+    {
+        clock.frames = lockedClock.frames;
+        clock.seconds = lockedClock.seconds;
+        clock.minutes = lockedClock.minutes;
+        clock.hours = lockedClock.hours;
+    }
     void FixedUpdate()
     {
         if (!isWorking)
