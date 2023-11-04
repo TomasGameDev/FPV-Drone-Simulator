@@ -36,7 +36,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     [System.Serializable]
     public class DroneParameters
     {
-        bool _isWork;
+        public bool _isWork;
         public bool isWork
         {
             get { return _isWork; }
@@ -46,7 +46,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
                 instance.droneUI.droneWorkText.SetActive(!value);
             }
         }
-        bool _stabilization;
+        public bool _stabilization;
         public bool stabilization
         {
             get { return _stabilization; }
@@ -123,9 +123,12 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
         droneParts.propellerFLSound = droneParts.propellerFL.GetComponent<AudioSource>();
         droneParts.propellerFLSound.time = Random.Range(0, droneParts.propellerFLSound.clip.length);
-        instance = this;
 
         droneParameters.stabilization = droneParameters.stabilization;
+
+        droneParameters.isWork = droneParameters.isWork;
+
+        instance = this;
     }
 
     public void HandleInputs()
