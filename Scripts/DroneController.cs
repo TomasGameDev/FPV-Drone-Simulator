@@ -159,8 +159,9 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     bool pitchPressed;
     public void SetThrottle(float _v)
     {
-        droneParameters.vThrottle += _v * droneParameters.throttleIncrement;
-        droneParameters.vThrottle = Mathf.Clamp(droneParameters.vThrottle, -droneParameters.maxThrottle, droneParameters.maxThrottle);
+        droneParameters.vThrottle = _v * droneParameters.maxThrottle;
+        //droneParameters.vThrottle += _v * droneParameters.throttleIncrement;
+        //droneParameters.vThrottle = Mathf.Clamp(droneParameters.vThrottle, -droneParameters.maxThrottle, droneParameters.maxThrottle);
         droneUI.throttleText.text = Mathf.FloorToInt(droneParameters.vThrottle * droneUI.throttleValueScale).ToString();
     }
     public void SetRoll(float _v)

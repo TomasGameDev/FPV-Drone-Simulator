@@ -70,7 +70,7 @@ public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler
     public float moveX;
     public float moveZ;
 
-    private bool _isLockJoystick;
+    public bool _isLockJoystick;
     public Image lockJoystickButton;
     public bool isLockJoystick
     {
@@ -89,7 +89,7 @@ public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler
         isLockJoystick = !_isLockJoystick;
     }
 
-    private bool _isDirectionalJoystick;
+    public bool _isDirectionalJoystick;
     public Image directionalJoystickImage;
     public Image directionalJoystickButton;
     public bool isDirectionalJoystick
@@ -110,7 +110,7 @@ public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler
         isDirectionalJoystick = !_isDirectionalJoystick;
     }
 
-    private bool _isLockJoystickMove;
+    public bool _isLockJoystickMove;
     public Image isLockJoystickMoveButton;
     public bool isLockJoystickMove
     {
@@ -131,7 +131,7 @@ public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler
         isLockJoystickMove = !isLockJoystickMove;
     }
 
-    private bool _isMaximizedJoystick;
+    public bool _isMaximizedJoystick;
     public Image maximizedZoneImage;
     public Image maximizedJoystickButton;
     public bool isMaximizedJoystic
@@ -206,7 +206,7 @@ public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler
             }
             else
             {
-                if (!_isLockJoystickMove) joystickPos.anchoredPosition = Vector2.zero;
+                if (_isLockJoystickMove) joystickPos.anchoredPosition = Vector2.zero;
                 Moving(new Vector2(joystickPos.position.x, joystickPos.position.y) + velocity * _joystickSize);
             }
         }
@@ -293,6 +293,7 @@ public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
         isJPress = true;
+        if (!_isLockJoystickMove) joystickPos.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
