@@ -30,6 +30,11 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
         public DroneTimer droneTimer;
 
+        public RectTransform horizontalLine;
+
+        public RectTransform[] lines;
+        public int linesPosPixelStep = 15;
+        public RectTransform[] linesPoses;
     }
     [Space(10)]
     public DroneParameters droneParameters;
@@ -123,7 +128,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
         droneParts.propellerFLSound = droneParts.propellerFL.GetComponent<AudioSource>();
         droneParts.propellerFLSound.time = Random.Range(0, droneParts.propellerFLSound.clip.length);
-         
+
         instance = this;
 
         droneParameters.stabilization = droneParameters.stabilization;
@@ -145,6 +150,10 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         {
             droneParameters.isWork = !droneParameters.isWork;
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            droneParameters.vThrottle = Physics.gravity.magnitude / 4f * rig.mass;
+        }
     }
     bool rollPressed;
     bool pitchPressed;
@@ -157,12 +166,12 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     public void SetRoll(float _v)
     {
         droneParameters.vRoll = _v;
-        rollPressed = _v > 0;
+        rollPressed = _v != 0;
     }
     public void SetPitch(float _v)
     {
         droneParameters.vPitch = _v;
-        pitchPressed = _v > 0;
+        pitchPressed = _v != 0;
     }
     public void SetYaw(float _v)
     {
@@ -200,7 +209,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
             droneParameters.vPitch = 0;
             droneParameters.vRoll = 0;
             droneParameters.vYaw = 0;
-            if (droneParameters.vThrottle > droneParameters.throttleIncrement || droneParameters.vThrottle < -droneParameters.throttleIncrement )
+            if (droneParameters.vThrottle > droneParameters.throttleIncrement || droneParameters.vThrottle < -droneParameters.throttleIncrement)
                 droneParameters.vThrottle += droneParameters.throttleIncrement * (droneParameters.vThrottle > 0 ? -1f : 1f);
             else droneParameters.vThrottle = 0;
         }
@@ -216,11 +225,17 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
             {
                 droneParts.FRRot -= droneGyroscope.Roll * droneParameters.stabilizationForce;
                 droneParts.BRRot -= droneGyroscope.Roll * droneParameters.stabilizationForce;
+
+                droneParts.FLRot += droneGyroscope.Roll * droneParameters.stabilizationForce;
+                droneParts.BLRot += droneGyroscope.Roll * droneParameters.stabilizationForce;
             }
             if (!pitchPressed)
             {
                 droneParts.FRRot -= droneGyroscope.Pitch * droneParameters.stabilizationForce;
                 droneParts.FLRot -= droneGyroscope.Pitch * droneParameters.stabilizationForce;
+
+                droneParts.BRRot += droneGyroscope.Pitch * droneParameters.stabilizationForce;
+                droneParts.BLRot += droneGyroscope.Pitch * droneParameters.stabilizationForce;
             }
         }
 
@@ -260,6 +275,17 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         float distPitchL = Vector3.Distance(transform.up, -droneParts.gyroscope.forward);
 
         droneGyroscope.Pitch = Vector3.Distance(transform.forward, droneParts.gyroscope.forward) / 2f * (distPitchR > distPitchL ? 1f : -1f);
+
+        droneParts.horizontalLine.anchoredPosition = new Vector2(0, -droneGyroscope.Pitch * Screen.height / 3f);
+        droneParts.horizontalLine.rotation = Quaternion.Euler(0, 0, -transform.eulerAngles.z);
+
+        for (int l = 0; l < droneParts.linesPoses.Length; l++)
+        {
+            droneParts.lines[l].position = new Vector2(
+                Mathf.RoundToInt(droneParts.linesPoses[l].position.x / droneParts.linesPosPixelStep) * droneParts.linesPosPixelStep,
+                Mathf.RoundToInt(droneParts.linesPoses[l].position.y / droneParts.linesPosPixelStep) * droneParts.linesPosPixelStep);
+            droneParts.lines[l].rotation = Quaternion.Euler(0, 0, -transform.eulerAngles.z);
+        }
     }
     private void UpdateUI()
     {
