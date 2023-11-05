@@ -285,7 +285,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
             droneParts.lines[l].position = new Vector2(
                 Mathf.RoundToInt(droneParts.linesPoses[l].position.x / droneParts.linesPosPixelStep) * droneParts.linesPosPixelStep,
                 Mathf.RoundToInt(droneParts.linesPoses[l].position.y / droneParts.linesPosPixelStep) * droneParts.linesPosPixelStep);
-            droneParts.lines[l].rotation = Quaternion.Euler(0, 0, -transform.eulerAngles.z);
+            //droneParts.lines[l].rotation = Quaternion.Euler(0, 0, -transform.eulerAngles.z);
         }
     }
     private void UpdateUI()
