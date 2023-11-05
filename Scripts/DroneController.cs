@@ -110,7 +110,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     [Space(10)]
     [Header("Other")]
     [Space(10)]
-    public Vector3 sapawnpoint;
+    public Transform sapawnpoint;
 
     Rigidbody rig;
 
@@ -186,8 +186,8 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     }
     public void Respawn()
     {
-        transform.position = sapawnpoint;
-        transform.rotation = Quaternion.identity;
+        transform.position = sapawnpoint.position;
+        transform.rotation = sapawnpoint.rotation;
         rig.velocity = Vector3.zero;
         rig.angularVelocity = Vector3.zero;
         droneSpeed.forwardSpeed = droneSpeed.magnitude = 0;
