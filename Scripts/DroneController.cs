@@ -74,6 +74,8 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         public float vPitch;
         public float vYaw;
 
+        public float hoverHeight = 20f;
+        public float hoverForce = 5;
     }
     [Space(10)]
     public DroneSpeed droneSpeed;
@@ -134,6 +136,8 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         droneParameters.stabilization = droneParameters.stabilization;
 
         droneParameters.isWork = droneParameters.isWork;
+
+        Respawn();
     }
 
     public void HandleInputs()
@@ -252,13 +256,60 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         droneParts.propellerFRSound.pitch = 0.7f + droneParts.propellerFRSound.volume * 0.4f;
         droneParts.propellerFLSound.pitch = 0.7f + droneParts.propellerFLSound.volume * 0.4f;
 
+        float propellerFRHover = 0;
+        float propellerFLHover = 0;
+        float propellerBRHover = 0;
+        float propellerBLHover = 0;
+        for (int p = 0; p < 4; p++)
+        {
+            Ray ray = new Ray();
 
-        rig.AddForceAtPosition(transform.up * droneParts.FRRot, droneParts.propellerFR.position);
-        rig.AddForceAtPosition(transform.up * droneParts.FLRot, droneParts.propellerFL.position);
+            switch (p)
+            {
+                case 0:
+                    ray.origin = droneParts.propellerFR.position;
+                    break;
+                case 1:
+                    ray.origin = droneParts.propellerFL.position;
+                    break;
+                case 2:
+                    ray.origin = droneParts.propellerBR.position;
+                    break;
+                case 3:
+                    ray.origin = droneParts.propellerBL.position;
+                    break;
+            }
+            ray.direction = -transform.up;
+            Color rayColor = Color.white;
+            if (Physics.Raycast(ray, out RaycastHit hit, droneParameters.hoverHeight))
+            {
+                float dist = 1f * droneParameters.hoverHeight / Vector3.Distance(ray.origin, hit.point);
+                switch (p)
+                {
+                    case 0:
+                        propellerFRHover = dist;
+                        break;
+                    case 1:
+                        propellerFLHover = dist;
+                        break;
+                    case 2:
+                        propellerBRHover = dist;
+                        break;
+                    case 3:
+                        propellerBLHover = dist;
+                        break;
+                }
+                rayColor = Color.yellow;
+            }
+            Debug.DrawRay(ray.origin, ray.direction * droneParameters.hoverHeight, rayColor);
+        }
+
+        rig.AddForceAtPosition(transform.up * (droneParts.FRRot + propellerFRHover * (droneParts.FRRot > 0 ? droneParameters.hoverForce : 0)), droneParts.propellerFR.position);
+        rig.AddForceAtPosition(transform.up * (droneParts.FLRot + propellerFLHover * (droneParts.FLRot > 0 ? droneParameters.hoverForce : 0)), droneParts.propellerFL.position);
 
 
-        rig.AddForceAtPosition(transform.up * droneParts.BRRot, droneParts.propellerBR.position);
-        rig.AddForceAtPosition(transform.up * droneParts.BLRot, droneParts.propellerBL.position);
+        rig.AddForceAtPosition(transform.up * (droneParts.BRRot + propellerBRHover * (droneParts.BRRot > 0 ? droneParameters.hoverForce : 0)), droneParts.propellerBR.position);
+        rig.AddForceAtPosition(transform.up * (droneParts.BLRot + propellerBLHover * (droneParts.BLRot > 0 ? droneParameters.hoverForce : 0)), droneParts.propellerBL.position);
 
         rig.AddTorque(transform.up * droneParameters.vYaw * droneParameters.yaw);
     }
