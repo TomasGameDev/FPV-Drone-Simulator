@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!28 &2800000
+Texture2D:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TerrText239
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 2
+  m_Width: 9
+  m_Height: 13
+  m_CompleteImageSize: 592
+  m_MipsStripped: 0
+  m_TextureFormat: 4
+  m_MipCount: 4
+  m_IsReadable: 0
+  m_IsPreProcessed: 0
+  m_IgnoreMasterTextureLimit: 0
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
+  m_VTOnly: 0
+  m_AlphaIsTransparency: 0
+  m_ImageCount: 1
+  m_TextureDimension: 2
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 2
+    m_Aniso: 16
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_LightmapFormat: 0
+  m_ColorSpace: 0
+  m_PlatformBlob: 
+  image data: 592
+  _typelessdata: 204519ff27471eff2e4c26ff204017ff1d4016ff103509ff22491cff1d4717ff1e4818ff1d4314ff17360dff1e3c16ff214118ff163b10ff153f11ff174312ff184615ff12410dff1c4213ff17360dff1a3812ff26461dff14390eff1e4518ff123e0dff1a4817ff12410dff214718ff25441bff22401aff224219ff12370cff183f12ff143e10ff1b4716ff16420fff294d21ff25451cff23411bff15350cff14390eff0f3609ff194315ff133f0eff123e0dff284c20ff1b3b12ff1c3c15ff123209ff1c4116ff153a0eff21481bff133d0dff133d0dff1a3e12ff15350cff193912ff1c3c13ff21461bff204519ff1f4619ff1c4314ff1c4314ff0d3006ff14340bff16360fff23461cff1c3f15ff23481cff153c0fff214718ff224819ff0c2f05ff2a4a21ff18380fff0c2f05ff24471dff1d4115ff264b1fff224618ff264a1cff1a3d13ff214118ff224219ff1d4016ff25481eff13370bff204418ff284c1eff335427ff24441bff1f4218ff1a3d13ff1e4216ff2b4f23ff1a3e12ff1a3e12ff26471cff3a592fff204017ff1e4117ff1b3e14ff1e4216ff25491dff24481cff315227ff345329ff2e4a21ff1d4018ff1a3d13ff26491fff294d21ff1a3e12ff27481dff46673cff49683eff264219ff1f4117ff204018ff183f12ff194514ff204217ff1d3d15ff163e11ff154211ff204218ff1a3b12ff193f13ff174011ff16370eff1b3d14ff1f4418ff204618ff1e3f15ff1e4116ff1f4317ff2b4d20ff1e4117ff214519ff2a4d21ff345229ff1e4016ff184112ff1b3d14ff1c4215ff1e4117ff294b1fff1e4217ff
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 

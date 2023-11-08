@@ -65,6 +65,9 @@ public class MeshSaver : MonoBehaviour
             newMesh.transform.rotation = mesh.transform.rotation;
             newMesh.transform.localScale = mesh.transform.localScale;
             newMesh.AddComponent<MeshFilter>().mesh = savedMesh;
+
+            newMesh.AddComponent<MeshCollider>().sharedMesh = savedMesh;
+
             newMesh.AddComponent<MeshRenderer>().material = defaultMaterial;
             newMesh.GetComponent<MeshRenderer>().material.SetTexture("_overlay0Texture", mainTexture);
 
