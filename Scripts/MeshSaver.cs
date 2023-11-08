@@ -15,9 +15,9 @@ public class MeshSaver : MonoBehaviour
     public int minimumLODLevel = 20;
     public bool saveOnlyActive = true;
     public bool targetLODLevelEnable = true;
-    public bool minimumLODLevelEnable = true;
+    public bool minimumLODLevelEnable = true; 
     public void SaveMeshAsAsset()
-    {
+    { 
         ClearFiles();
         ClearMeshes();
         int counter = 0;
