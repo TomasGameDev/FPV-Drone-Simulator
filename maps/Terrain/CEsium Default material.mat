@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: CEsium Default material
   m_Shader: {fileID: -6465566751694194690, guid: 407c0cff68611ac46a65eec87a5203f5,
     type: 3}
   m_ValidKeywords: []
