@@ -35,6 +35,9 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         public RectTransform[] lines;
         public int linesPosPixelStep = 15;
         public RectTransform[] linesPoses;
+
+
+        public Transform cameraPos;
     }
     [Space(10)]
     public DroneParameters droneParameters;
@@ -76,6 +79,8 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
         public float hoverHeight = 20f;
         public float hoverForce = 5;
+
+        public float cameraAngle;
     }
     [Space(10)]
     public DroneSpeed droneSpeed;
@@ -140,6 +145,11 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         Respawn();
     }
 
+    public void ToggleStabilization()
+    {
+        droneParameters.stabilization = !droneParameters.stabilization;
+    }
+
     public void HandleInputs()
     {
         if (Input.GetKey(KeyCode.R))
@@ -148,7 +158,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            droneParameters.stabilization = !droneParameters.stabilization;
+            ToggleStabilization();
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -206,6 +216,10 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
         UpdateUI();
 
+        if (droneParameters.cameraAngle != 0)
+        {
+            droneParts.cameraPos.localRotation = Quaternion.Euler(droneParameters.cameraAngle, 0, 0);
+        }
     }
     private void UpdatePhysics()
     {

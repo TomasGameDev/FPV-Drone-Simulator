@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 8001213b8aaa7c9448cf4cd38d025066
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_city52_dom_sovetov_dom_sovetov_eg
+    second: {fileID: 2100000, guid: 33b8475c7a71d6542b393c7839567674, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_concrete_concrete_modular_floor001a
+    second: {fileID: 2100000, guid: 6d78a85729e86dd4fb1c683955dcf390, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_concrete_concreteceiling001a
+    second: {fileID: 2100000, guid: ff8acb44da33aee448d9c57f1a6bd924, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_concrete_concreteceiling003a
+    second: {fileID: 2100000, guid: 6516fcaaef89f254db0c2f3c8c3332a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_concrete_concretewall019a
+    second: {fileID: 2100000, guid: 2b56cb63fa3155b47982af9dbc2e0951, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_concrete_concretewall075a
+    second: {fileID: 2100000, guid: 57c57714cd5b98148958499cab02c3e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_concrete_concretewall075b
+    second: {fileID: 2100000, guid: 39ff79f7b21c22b4f83caea3e4590f44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_concrete_concretewall075c
+    second: {fileID: 2100000, guid: 0e0dcd97090b96849b3591ad419d0510, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_de_cbble_grassfloor01
+    second: {fileID: 2100000, guid: 61b85b7a184068440aeec1e2ce3ef510, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_de_nuke_nukwindowd
+    second: {fileID: 2100000, guid: 0c6a1f48c07822e4fb79365acd39e5cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_de_train_train_largemetal_door_01
+    second: {fileID: 2100000, guid: 450ae20f517693049b94758c0cc3fc07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_decals_decalgraffiti043a
+    second: {fileID: 2100000, guid: d3fea98df2e67ce48873169b51fa92f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_decals_decalgraffiti044a
+    second: {fileID: 2100000, guid: 4f2e96a6782dff646939c982f049047d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_decals_decalgraffiti059a
+    second: {fileID: 2100000, guid: c154048ab14084c4aba1b63debde0dd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_glass_glasswindow015a
+    second: {fileID: 2100000, guid: 3421e01abdf3df34f926514f7051ca43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_graffiti_graffiti_composite_01a
+    second: {fileID: 2100000, guid: 84715feff6d0a5948aa31869ada6f699, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_graffiti_graffiti_composite_01e
+    second: {fileID: 2100000, guid: 6ab5bcd21e33fa645885f079cf2bcf31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_graffiti_graffiti_composite_01f
+    second: {fileID: 2100000, guid: 8b1ebdb9268e02c468b225d47aa3e217, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_graffiti_graffiti_composite_01h
+    second: {fileID: 2100000, guid: bf9f8c42875e7b34991b06cd86bb86f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_graffiti_graffiti_composite_01i
+    second: {fileID: 2100000, guid: 8e057591af972e54f813d970fdcc4ac6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_graffiti_graffiti_l4d2_tagcomp001
+    second: {fileID: 2100000, guid: 22900d511bd616646a43ea1856a76cfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_graffiti_graffiti_throwup_16a
+    second: {fileID: 2100000, guid: cba9562a9e6cbcb4a9910533a7e1a2ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_graffiti_graffiti_virus_throw05_256
+    second: {fileID: 2100000, guid: 143e29c52e84c434eb856e88d28b3a09, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_hr_massive_concrete_floor_2
+    second: {fileID: 2100000, guid: af424ef877daa34438413f9f7fd64871, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_bts_bts_chair
+    second: {fileID: 2100000, guid: cba48b6260b545d42a3e67e07f890350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_bts_bts_table
+    second: {fileID: 2100000, guid: 6d4270a7aca1f8241ae8332c12982a3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_cs_militia_boxes_garage_lower
+    second: {fileID: 2100000, guid: a566cf30082782242adc39043d10d32f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_de_prodigy_wood_pallet_01
+    second: {fileID: 2100000, guid: c9cab244391ea6c47af99271ba3c6053, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_interiors_lightbulb01a
+    second: {fileID: 2100000, guid: f50398f4eb31d7145a0954e54bacb76a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_junk_cardboard_boxes001a
+    second: {fileID: 2100000, guid: da54a089a7617da4fa3cacdd31d4b168, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_junk_wood_palletcrate001a
+    second: {fileID: 2100000, guid: 52f694af7de80ca498b29ba0e245706d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_junk_woodcrates01a
+    second: {fileID: 2100000, guid: 354bd4fe77bcb954c8396d16bd74871e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_lab_lab_objects01
+    second: {fileID: 2100000, guid: af4152df8cae5e24e887cc3dac05b017, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_lab_lab_objects03
+    second: {fileID: 2100000, guid: 9f7c294a4ebd5ed4cb09ccea0d789804, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_lab_tpplug_sheet
+    second: {fileID: 2100000, guid: 6cba13e29945103468775e4754177ef8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_office_filebox_1980
+    second: {fileID: 2100000, guid: 6e75afd8c769fc94fa3ec9e2b68e6350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_ol_fueldrum2
+    second: {fileID: 2100000, guid: 80dba7f71666f9f4484fef6b2414675b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_junk_accum_power_battery
+    second: {fileID: 2100000, guid: 2923083c5d2e3ea4da0cbe26b4ff6251, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_junk_metalbox_1
+    second: {fileID: 2100000, guid: 861fd7531465d644b94fa85627b2711f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_metal_support_beam_frame
+    second: {fileID: 2100000, guid: 28aa42860c0272248a7b87ab4b5df056, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_ohp10
+    second: {fileID: 2100000, guid: d4a7e3cf52677434fbafdc13e8747bb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_oil_drum001a
+    second: {fileID: 2100000, guid: 8c1ba166cb7812c4abd181b21f72d48c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_plastic_bucket
+    second: {fileID: 2100000, guid: 668e31b101d5d544c97ac9753e12db57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_propper_garage_weld_canister_1
+    second: {fileID: 2100000, guid: 0ad29577fa090db458bcf46e45e8c367, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_propper_metaldesk
+    second: {fileID: 2100000, guid: cb258a458d960274ebc3fffa1880971f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_propper_sovok_chair_v2_1
+    second: {fileID: 2100000, guid: a9436253e1273f24eb52e695ee355600, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_propper_vega_radio
+    second: {fileID: 2100000, guid: 74b4d5cea7d27c84abfe0b34aef63035, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_props_se_storage_paintbucket01
+    second: {fileID: 2100000, guid: b23036b4084323b4690d799a2a32af60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_weapons_shell_casing01
+    second: {fileID: 2100000, guid: d6987956b2ec05c4abe8cf31c68cc43e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_nature_dirtfloor_mine001a
+    second: {fileID: 2100000, guid: 0e8c1eb6c81893d4b81eee782165a464, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_nature_snowfloor002a
+    second: {fileID: 2100000, guid: e24cef1ea17c73b47b8dc7ce2f84f2bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_se_building_deco_hru01a
+    second: {fileID: 2100000, guid: 714f12d8004982f40998564dbcc17f72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_se_building_panel_concrete_wall_1a
+    second: {fileID: 2100000, guid: 94317aef82aa0a94bb66c945339e6490, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_se_building_panel_concrete_wall_3a
+    second: {fileID: 2100000, guid: 4bc28262a14894140b94871e233fcb87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_se_building_panel_concrete_wall_5a
+    second: {fileID: 2100000, guid: c5887ead7b13d5744a198ce6630dba09, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_se_decals_trash01
+    second: {fileID: 2100000, guid: f83129c586358e44aa8bf5246bf54587, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_wood_ep2_woodfloor01
+    second: {fileID: 2100000, guid: 916f3aa1d677a1f47bd1180b9a236c52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_wood_ep2_woodfloor02
+    second: {fileID: 2100000, guid: 6601091d590c62f408c6328fbe1209d1, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2.6
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 2.6
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
