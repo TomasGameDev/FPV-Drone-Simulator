@@ -3182,8 +3182,8 @@ MonoBehaviour:
     _isWork: 1
     _stabilization: 0
     stabilizationForce: 3
-    throttleIncrement: 60
-    maxThrottle: 60
+    throttleIncrement: 120
+    maxThrottle: 120
     roll: 6
     pitch: 6
     yaw: 6
@@ -5721,6 +5721,9 @@ MonoBehaviour:
   dot: {fileID: 4684182805388259128}
   axisXName: Roll
   axisYName: Pitch
+  joystickForce: 0.8
+  joystickAxisXName: Roll Joystick
+  joystickAxisYName: Pitch Joystick
   maxJoystickAlpha: 0.5
   maxJoystickDotAlpha: 1
 --- !u!1 &4684182806757071370
@@ -6768,6 +6771,9 @@ MonoBehaviour:
   dot: {fileID: 6236072050710554437}
   axisXName: Yaw
   axisYName: Throttle
+  joystickForce: 0.8
+  joystickAxisXName: Yaw Joystick
+  joystickAxisYName: Throttle Joystick
   maxJoystickAlpha: 0.5
   maxJoystickDotAlpha: 1
 --- !u!1 &5991126083150074098

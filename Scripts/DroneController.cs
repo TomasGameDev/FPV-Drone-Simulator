@@ -52,6 +52,7 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
             {
                 _isWork = value;
                 instance.droneUI.droneWorkText.SetActive(!value);
+                instance.rig.angularDrag = _isWork ? 14f : 2.5f;
             }
         }
         public bool _stabilization;
@@ -71,6 +72,12 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         public float roll;
         public float pitch;
         public float yaw;
+
+        public float rollStabilization = 30f;
+        public float pitchStabilization = 30f;
+        public float yawStabilization = 30f;
+
+        public float gravityResistMultiplier = 30f;
 
         public float vThrottle;
         public float vRoll;
@@ -111,7 +118,12 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     public class DroneGyroscope
     {
         public float Roll;
+        public float RollDelta;
+
         public float Pitch;
+        public float PitchDelta;
+
+        public float YawDelta;
     }
 
     [Space(10)]
@@ -207,6 +219,12 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
         droneSpeed.forwardSpeed = droneSpeed.magnitude = 0;
         droneParameters.vThrottle = 0;
         droneParts.droneTimer.ReloadClock();
+
+        droneGyroscope.Pitch = 0;
+        droneGyroscope.Roll = 0;
+        droneGyroscope.PitchDelta = 0;
+        droneGyroscope.RollDelta = 0;
+        droneGyroscope.YawDelta = 0;
     }
     private void FixedUpdate()
     {
@@ -232,6 +250,18 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
                 droneParameters.vThrottle += droneParameters.throttleIncrement * (droneParameters.vThrottle > 0 ? -1f : 1f);
             else droneParameters.vThrottle = 0;
         }
+
+        if (droneParameters.vPitch == 0) droneParameters.vPitch = droneGyroscope.PitchDelta * droneParameters.pitchStabilization;
+        if (droneParameters.vRoll == 0) droneParameters.vRoll = droneGyroscope.RollDelta * droneParameters.rollStabilization;
+        if (droneParameters.vYaw == 0) droneParameters.vYaw = droneGyroscope.YawDelta * droneParameters.yawStabilization;
+
+        if (droneParameters.vThrottle != 0 && (
+            (droneParameters.vThrottle > 0 && rig.velocity.y < 0) ||
+            (droneParameters.vThrottle < 0 && rig.velocity.y > 0)))
+        {
+            rig.velocity += Vector3.up * (droneParameters.vThrottle + rig.velocity.y * droneParameters.gravityResistMultiplier) * Time.deltaTime; // Calculate up speed for this
+        }
+
         droneParts.FRRot = droneParameters.vThrottle + droneParameters.vPitch * droneParameters.pitch - droneParameters.vRoll * droneParameters.roll;
         droneParts.FLRot = droneParameters.vThrottle + droneParameters.vPitch * droneParameters.pitch + droneParameters.vRoll * droneParameters.roll;
         droneParts.BRRot = droneParameters.vThrottle - droneParameters.vPitch * droneParameters.pitch - droneParameters.vRoll * droneParameters.roll;
@@ -331,16 +361,23 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
     {
         droneSpeed.magnitude = rig.velocity.magnitude;
 
+        // droneGyroscope.YawDelta = 0;//?
+
         droneParts.gyroscope.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
         float distRollR = Vector3.Distance(transform.up, droneParts.gyroscope.right);
         float distRollL = Vector3.Distance(transform.up, -droneParts.gyroscope.right);
 
+        droneGyroscope.RollDelta = droneGyroscope.Roll;
         droneGyroscope.Roll = Vector3.Distance(transform.right, droneParts.gyroscope.right) / 2f * (distRollR > distRollL ? 1f : -1f);
+        droneGyroscope.RollDelta = droneGyroscope.Roll - droneGyroscope.RollDelta;
 
         float distPitchR = Vector3.Distance(transform.up, droneParts.gyroscope.forward);
         float distPitchL = Vector3.Distance(transform.up, -droneParts.gyroscope.forward);
 
+        droneGyroscope.PitchDelta = droneGyroscope.Pitch;
         droneGyroscope.Pitch = Vector3.Distance(transform.forward, droneParts.gyroscope.forward) / 2f * (distPitchR > distPitchL ? 1f : -1f);
+        droneGyroscope.PitchDelta = droneGyroscope.PitchDelta - droneGyroscope.Pitch;
+
 
         droneParts.horizontalLine.anchoredPosition = new Vector2(0, -droneGyroscope.Pitch * Screen.height / 3f);
         droneParts.horizontalLine.rotation = Quaternion.Euler(0, 0, -transform.eulerAngles.z);
