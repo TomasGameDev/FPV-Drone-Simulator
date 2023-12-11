@@ -152,19 +152,19 @@ public class DroneController : MonoBehaviour, IJoystickContrillable
 
     public void HandleInputs()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.R) || Input.GetKeyDown(KeyCode.Joystick1Button9))
         {
             Respawn();
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
             ToggleStabilization();
         }
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.Joystick1Button8))
         {
             droneParameters.isWork = !droneParameters.isWork;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             droneParameters.vThrottle = Physics.gravity.magnitude / 4f * rig.mass;
         }

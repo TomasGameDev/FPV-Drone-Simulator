@@ -176,8 +176,13 @@ public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler
     Image dotImage;
     Image joystickImage;
     Vector2 locPos;
-    public string axisXName = "Horizontal";
-    public string axisYName = "Vertical";
+    public string axisXName = "Yaw";
+    public string axisYName = "Throttle";
+
+    [Range(0, 1f)] public float joystickForce = 1f;
+    public string joystickAxisXName = "Yaw Joystick";
+    public string joystickAxisYName = "Throttle Joystick";
+
     void Start()
     {
         LinkJoystick(controllableObject);
@@ -200,6 +205,10 @@ public class JoystickController : MonoBehaviour, IDragHandler, IBeginDragHandler
             Vector2 velocity = Vector2.zero;
             velocity += Vector2.right * Input.GetAxis(axisXName);
             velocity += Vector2.up * Input.GetAxis(axisYName);
+
+            velocity += Vector2.right * Input.GetAxis(joystickAxisXName) * joystickForce;
+            velocity += Vector2.up * Input.GetAxis(joystickAxisYName) * joystickForce;
+
             if (velocity == Vector2.zero)
             {
                 OnEndMove();

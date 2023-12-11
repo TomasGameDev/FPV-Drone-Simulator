@@ -1621,5 +1621,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drone assets
       objectReference: {fileID: 0}
+    - target: {fileID: 4684182806732281543, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
+      propertyPath: joystickAxisXName
+      value: Roll Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684182806732281543, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
+      propertyPath: joystickAxisYName
+      value: Pitch Joystick
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
