@@ -1667,6 +1667,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4684182805488631422, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684182805488631422, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684182805488631422, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -78.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4684182805943739970, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
       propertyPath: droneParameters.yaw
       value: 20
@@ -1698,6 +1710,18 @@ PrefabInstance:
     - target: {fileID: 4684182805943739970, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
       propertyPath: droneParameters.gravityResistMultiplier
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684182805943739971, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684182805943739971, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684182805943739971, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -78.6
       objectReference: {fileID: 0}
     - target: {fileID: 4684182805943739983, guid: 1ae40f92e05821b4b9b579d337813e12, type: 3}
       propertyPath: m_AngularDrag
